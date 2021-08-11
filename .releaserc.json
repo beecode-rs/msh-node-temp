@@ -20,5 +20,5 @@
     ]
   ],
   "preset": "angular",
-  "repositoryUrl": "git@github.com:{{gitTeam}}/{{projectName}}.git"
+  "repositoryUrl": "git@github.com:{{{gitTeam}}}/{{{projectName}}}.git"
 }

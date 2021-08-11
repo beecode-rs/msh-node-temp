@@ -1,2 +1,2 @@
-console.log('Test project import {{projectName}}')
+console.log('Test project import {{{projectName}}}')
 
