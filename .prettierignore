@@ -1,9 +1,10 @@
 .base-frame-tm
 .idea/
+bin/
 .nyc_output/
 .semaphore/
 coverage/
-lib/
+dist/
 node_modules/
 resource/
 package.json

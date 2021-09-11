@@ -1,5 +1,11 @@
 {
-  "author": "Milos Bugarinovic <milos.bugarinovic@gmail.com>",
+  "_moduleAliases": {
+    "src": "./dist"
+  },
+  "author": "Milos Bugarinovic <milos.bugarinovic@gmail.com> (http://milos.bugarinovic.com)",
+  "bin": {
+    "msh": "./bin/msh.js"
+  },
   "bugs": {
     "url": "https://github.com/{{{gitTeam}}}/{{{projectName}}}/issues"
   },
@@ -14,11 +20,24 @@
     }
   },
   "dependencies": {
-    "@beecode/msh-node-log": "2.0.2",
-    "base-64": "1.0.0",
-    "deep-equal": "2.0.5"
+    "@beecode/msh-node-app": "0.1.1",
+    "@beecode/msh-node-env": "0.2.4",
+    "async-shelljs": "0.1.4",
+    "chalk": "4.1.0",
+    "compare-versions": "3.6.0",
+    "dotenv": "8.2.0",
+    "fast-json-stable-stringify": "2.1.0",
+    "inquirer": "8.0.0",
+    "lodash": "4.17.21",
+    "minimist": "1.2.5",
+    "minimist-options": "4.1.0",
+    "module-alias": "2.2.2",
+    "mz": "2.7.0",
+    "request": "2.88.2",
+    "request-promise-native": "1.0.9",
+    "source-map-support": "0.5.19"
   },
-  "description": "",
+  "description": "MicroService Shell helper",
   "devDependencies": {
     "@commitlint/cli": "12.1.1",
     "@commitlint/config-conventional": "12.1.1",
@@ -30,20 +49,28 @@
     "@semantic-release/git": "9.0.0",
     "@semantic-release/github": "7.2.1",
     "@semantic-release/release-notes-generator": "9.0.2",
-    "@types/base-64": "0.1.3",
     "@types/chai": "4.2.16",
-    "@types/deep-equal": "1.0.1",
+    "@types/chalk": "2.2.0",
+    "@types/compare-versions": "3.3.0",
     "@types/dotenv": "8.2.0",
+    "@types/fast-json-stable-stringify": "2.0.0",
+    "@types/inquirer": "7.3.1",
+    "@types/lodash": "4.14.168",
+    "@types/minimist": "1.2.1",
+    "@types/minimist-options": "3.0.0",
     "@types/mocha": "8.2.2",
+    "@types/module-alias": "2.0.0",
+    "@types/mz": "2.7.3",
     "@types/node": "14.14.41",
-    "@types/proxyquire": "1.3.28",
+    "@types/request": "2.48.5",
+    "@types/shelljs": "0.8.8",
     "@types/sinon": "10.0.0",
+    "@types/source-map-support": "0.5.3",
     "@typescript-eslint/eslint-plugin": "4.22.0",
     "@typescript-eslint/parser": "4.22.0",
     "chai": "4.3.4",
     "codecov": "3.8.1",
     "commitizen": "4.2.3",
-    "dotenv": "8.2.0",
     "eslint": "7.24.0",
     "eslint-config-prettier": "8.2.0",
     "eslint-plugin-import": "2.22.1",
@@ -53,24 +80,24 @@
     "nyc": "15.1.0",
     "pinst": "2.1.6",
     "prettier": "2.2.1",
-    "proxyquire": "2.1.3",
     "replace-json-property": "1.6.3",
     "rimraf": "3.0.2",
     "semantic-release": "17.4.2",
     "sinon": "10.0.0",
-    "source-map-support": "0.5.19",
     "ts-node": "9.1.1",
     "tsc-watch-2": "0.0.2",
+    "tsconfig-lint": "0.12.0",
     "typescript": "4.2.4"
   },
   "files": [
-    "lib",
+    "dist",
+    "bin",
     "package-lock.json"
   ],
   "homepage": "https://github.com/{{{gitTeam}}}/{{{projectName}}}#readme",
   "keywords": [],
   "license": "mit",
-  "main": "./lib/index.js",
+  "main": "./dist/index.js",
   "name": "{{{npmPackagePrefix}}}{{{projectName}}}",
   "repository": {
     "type": "git",
@@ -80,10 +107,11 @@
     "build": "npm run clean && tsc -p ./tsconfig-build.json",
     "build:watch": "npm run clean && tsc-watch -p tsconfig-build.json --preserveWatchOutput",
     "bump-version": "rjp package.json version",
-    "clean": "rimraf ./lib/*",
+    "clean": "rimraf ./dist/*",
     "commit": "git-cz",
     "coverage": "nyc npm run test:unit",
     "coverage:publish": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "debug": "node --inspect -r ts-node/register ./src/index.ts",
     "doc:toc": "markdown-toc -i ./README.md",
     "eslint": "eslint . --ext .ts --quiet",
     "eslint:fix": "npm run eslint -- --fix",
@@ -96,10 +124,11 @@
     "prettier:fix": "prettier --write \"./src/**/*.{ts,json}\"",
     "semantic-release": "semantic-release",
     "semantic-release:check": "npm run semantic-release -- --dry-run --no-ci",
+    "start": "node ./dist/index.js",
+    "start:ts": "ts-node ./src/index.ts",
     "test": "npm run test:unit -- --forbid-only && npm run test:int -- --forbid-only",
-    "test:int": "mocha ./src/test/{**/,/}*.ts",
+    "test:int": "#mocha ./src/test/{**/,/}*.ts",
     "test:unit": "mocha ./src/{**/,/}*.test.ts"
   },
-  "typings": "./lib/index.d.ts",
-  "version": "0.2.4"
+  "version": "0.0.0"
 }

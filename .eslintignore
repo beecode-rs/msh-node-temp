@@ -3,6 +3,7 @@
 .nyc_output
 .semaphore
 coverage
-lib
+bin
+dist
 node_modules
 resource

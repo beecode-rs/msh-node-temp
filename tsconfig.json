@@ -1,24 +1,29 @@
 {
   "compilerOptions": {
-    "alwaysStrict": true,
-    "declaration": true,
-    "declarationMap": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
+    "declaration": false,
+    "emitDecoratorMetadata": true,
     "esModuleInterop": true,
-    "lib": ["es2020"],
-    "module": "CommonJS",
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "outDir": "./lib",
-    "skipLibCheck": true,
-    "sourceMap": true,
+    "experimentalDecorators": true,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "lib": ["es2016", "dom", "es2017", "esnext.asynciterable"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "noLib": false,
+    "outDir": "./dist",
+    "paths": {
+      "*": ["./node_modules/*"],
+      "src/*": ["./src/*"]
+    },
+    "removeComments": false,
     "strict": true,
-    "strictFunctionTypes": true,
-    "strictNullChecks": true,
-    "target": "es2017"
+    "strictPropertyInitialization": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "target": "ESNext"
   },
-  "exclude": ["./node_modules", "./lib", "./.idea", "./.semaphore", "./resource"],
-  "include": ["./src/**/*.ts"]
+  "exclude": ["./node_modules", "./dist", "./.idea", "./.semaphore", "./resource"],
+  "include": ["./src/**/*.ts", "node_modules/@types/shelljs/make.d.ts"]
 }
