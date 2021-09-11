@@ -1,14 +1,10 @@
 import 'module-alias/register'
 import 'source-map-support/register'
+import 'src/util/config'
 
-const unhandledFn = (errorType) => (err): void => {
-  // eslint-disable-next-line no-console
-  console.error(errorType, err)
-  process.exit(1)
-}
+import { logger } from 'src/util/logger'
 
-process.on('uncaughtException', unhandledFn('Uncaught Exception'))
-process.on('unhandledRejection', unhandledFn('Unhandled Rejection'))
+process.on('uncaughtException', (error) => logger.error('Uncaught Exception', { error }))
+process.on('unhandledRejection', (error) => logger.error('Unhandled Rejection', { error }))
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-require('src/app').app.start()
+require('src/app').app.start() // eslint-disable-line
