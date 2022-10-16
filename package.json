@@ -65,6 +65,7 @@
   },
   "files": [
     "lib",
+    "src",
     "package-lock.json"
   ],
   "homepage": "https://github.com/{{{gitTeam}}}/{{{projectName}}}#readme",
